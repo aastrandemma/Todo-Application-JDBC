@@ -18,7 +18,7 @@ public class Todo {
     }
 
     public Todo(String title, LocalDate deadline, Person assignee) {
-        setTitle(title);
+        this(title);
         setDeadline(deadline);
         setAssignee(assignee);
     }
@@ -29,19 +29,15 @@ public class Todo {
     }
 
     public Todo(int id, String title, String description, LocalDate deadline, boolean done) {
+        this(title);
         this.id = id;
-        this.title = title;
         this.description = description;
         this.deadline = deadline;
         this.done = done;
     }
 
     public Todo(int id, String title, String description, LocalDate deadline, boolean done, Person assignee) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.deadline = deadline;
-        this.done = done;
+        this(id, title, description, deadline, done);
         this.assignee = assignee;
     }
 
@@ -61,7 +57,6 @@ public class Todo {
     }
 
     public void setDeadline(LocalDate deadline) {
-        Objects.requireNonNull(deadline, "Deadline can't be null.");
         this.deadline = deadline;
     }
 
@@ -70,7 +65,6 @@ public class Todo {
     }
 
     public void setAssignee(Person assignee) {
-        Objects.requireNonNull(assignee, "Assignee can't be null.");
         this.assignee = assignee;
     }
 
